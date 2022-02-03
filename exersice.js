@@ -105,10 +105,70 @@ const found = numbers.find(
     num => num > 3 // using a arrow funciton
     // () => {with no return statement and no need of curly braces for single line.} 
 );
-console.log(found);
+console.log("Found " + found);
+
+// testing using every and some.
+const hasPostive = numbers.every(
+    num => num > 0
+);
+console.log("Does numbers in the array are positive ? " + hasPostive);
+
+const moreThanTwo = numbers.some(
+    num => num > 2
+);
+console.log("Does numbers array have numbers greater than 2 ? " + moreThanTwo);
+
+// using filter to collect them in an array.
+const allMoreThanTwo = numbers.filter(
+    num => num > 2
+);
+console.log("All more than two are : " + allMoreThanTwo);
+
+// Map to a string
+const listItems = allMoreThanTwo.map(
+    num => "the item number is " + num
+);
+console.log(listItems);
+
+// Map to an object
+const items = allMoreThanTwo.map(
+    num => ({value : num})
+    // the code below is the long way to write the same thing.
+    // num => {
+    //     const obj = {value : num};
+    //     return obj;
+    // }
+);
+console.log(items);
+
+// chaining Functions
+const testChainig = numbers.filter(
+    num => num > 0
+).map(
+    num => ({value : num})
+).filter(
+    obj => obj.value > 2
+).map(
+    obj => obj.value
+);
+console.log(testChainig);
+
+// using reduce : To reduce the allMorethanTwo array to a single number which is the sum.
+const sum = allMoreThanTwo.reduce(
+    (accumulator,currentValue) =>
+        accumulator + currentValue
+, 0);
+console.log("The sum of the allMoreThanTwo array using reduce is : " + sum);
+
+
+
+
+
+
+
+
 
 // sorting reference types, but this only works efficently for comparing two objects, unless we need to look into another sorting algorithms.
-
 const carOne = [
     {id : 12 , name : "Toyota"},
     {id : 13 , name : "Mitsubishi"},
@@ -123,6 +183,8 @@ carOne.sort(function (a,b) {
     }
     return 0;
 });
+
+
 
 
 
